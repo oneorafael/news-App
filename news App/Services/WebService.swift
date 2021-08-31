@@ -7,17 +7,16 @@
 
 import Foundation
 class WebService {
-    
-    func getData(url:URL, completionHandler:@escaping([Any]?)->()){
+    func getData(url:URL, completionHandler:@escaping([Article])->()){
         URLSession.shared.dataTask(with: url) { data, _, error in
             if let error = error {
                 print(error.localizedDescription)
             } else {
-        // receber os dados da API
                 guard let data = data else {return}
-                print(data.count)
-        // Converter em um objeto da model
-        // Enviar para a ViewController
+                let articleArray = try? JSONDecoder().decode(ArticleList.self, from: data)
+                if let articleArray = articleArray {
+                    completionHandler(articleArray.articles)
+                }
             }
         }.resume()
     }
