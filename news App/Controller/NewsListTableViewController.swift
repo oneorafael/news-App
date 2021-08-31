@@ -14,7 +14,7 @@ class NewsListTableViewController: UITableViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tableView.register(UINib(nibName: "NewsTableViewCell", bundle: nil), forCellReuseIdentifier: K.reusableIdentifier)
         setup()
     }
     
@@ -38,10 +38,10 @@ class NewsListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.reusableIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.reusableIdentifier, for: indexPath) as! NewsTableViewCell
         let article = self.articlesVM.articles[indexPath.row]
-        cell.textLabel?.text = article.title
-        cell.detailTextLabel?.text = article.description
+        cell.titleLabel.text = article.title
+        cell.descriptionLabel.text = article.description
         return cell
     }
 }
