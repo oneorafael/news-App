@@ -9,4 +9,5 @@ import Foundation
 
 struct K {
     static let urlPath = ""
+    static let reusableIdentifier = "reusableCell"
 }
