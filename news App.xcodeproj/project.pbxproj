@@ -13,6 +13,8 @@
 		6722170C26DEBA0400D09BE3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6722170A26DEBA0400D09BE3 /* Main.storyboard */; };
 		6722170E26DEBA0500D09BE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6722170D26DEBA0500D09BE3 /* Assets.xcassets */; };
 		6722171126DEBA0500D09BE3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6722170F26DEBA0500D09BE3 /* LaunchScreen.storyboard */; };
+		6722171C26DEBAFE00D09BE3 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6722171B26DEBAFE00D09BE3 /* WebService.swift */; };
+		6722171F26DEBD4400D09BE3 /* contants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6722171E26DEBD4400D09BE3 /* contants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		6722170D26DEBA0500D09BE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6722171026DEBA0500D09BE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6722171226DEBA0500D09BE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6722171B26DEBAFE00D09BE3 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		6722171E26DEBD4400D09BE3 /* contants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,10 +60,12 @@
 		6722170326DEBA0400D09BE3 /* news App */ = {
 			isa = PBXGroup;
 			children = (
-				6722170426DEBA0400D09BE3 /* AppDelegate.swift */,
-				6722170626DEBA0400D09BE3 /* SceneDelegate.swift */,
+				6722171D26DEBD3700D09BE3 /* utils */,
+				6722171A26DEBAE500D09BE3 /* Services */,
 				6722171826DEBA1400D09BE3 /* Controller */,
 				6722171926DEBA3100D09BE3 /* Views */,
+				6722170426DEBA0400D09BE3 /* AppDelegate.swift */,
+				6722170626DEBA0400D09BE3 /* SceneDelegate.swift */,
 				6722170D26DEBA0500D09BE3 /* Assets.xcassets */,
 				6722171226DEBA0500D09BE3 /* Info.plist */,
 			);
@@ -81,6 +87,22 @@
 				6722170F26DEBA0500D09BE3 /* LaunchScreen.storyboard */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		6722171A26DEBAE500D09BE3 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				6722171B26DEBAFE00D09BE3 /* WebService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		6722171D26DEBD3700D09BE3 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				6722171E26DEBD4400D09BE3 /* contants.swift */,
+			);
+			path = utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +177,8 @@
 			files = (
 				6722170926DEBA0400D09BE3 /* NewsListTableViewController.swift in Sources */,
 				6722170526DEBA0400D09BE3 /* AppDelegate.swift in Sources */,
+				6722171F26DEBD4400D09BE3 /* contants.swift in Sources */,
+				6722171C26DEBAFE00D09BE3 /* WebService.swift in Sources */,
 				6722170726DEBA0400D09BE3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

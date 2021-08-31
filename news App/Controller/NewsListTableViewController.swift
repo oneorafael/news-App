@@ -11,7 +11,10 @@ class NewsListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        let urlPath = URL(string: K.urlPath)!
+        WebService().getData(url: urlPath) { _ in
+            
+        }
     }
 
 
