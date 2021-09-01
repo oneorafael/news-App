@@ -40,8 +40,7 @@ class NewsListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.reusableIdentifier, for: indexPath) as! NewsTableViewCell
         let article = self.articlesVM.articles[indexPath.row]
-        cell.titleLabel.text = article.title
-        cell.descriptionLabel.text = article.description
+        cell.prepare(Article: article)
         return cell
     }
 }
