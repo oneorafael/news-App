@@ -15,9 +15,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="RHZ-Rh-ZGx">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="CVw-9U-GNH">
+                                    <rect key="frame" x="197" y="0.0" width="20" height="20"/>
+                                </activityIndicatorView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="CVw-9U-GNH" firstAttribute="centerY" secondItem="RHZ-Rh-ZGx" secondAttribute="centerY" id="05Z-FA-irM"/>
+                                <constraint firstItem="CVw-9U-GNH" firstAttribute="centerX" secondItem="RHZ-Rh-ZGx" secondAttribute="centerX" id="VxJ-an-YVi"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reusableCell" id="kbE-EB-Uko" customClass="NewsTableViewCell" customModule="news_App" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="24.5" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kbE-EB-Uko" id="1Kk-5D-2pE">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -31,6 +45,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="News" id="J4P-F3-f2l"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="CVw-9U-GNH" id="tig-Aj-nb1"/>
+                        <outlet property="backgroundActivityIndicator" destination="RHZ-Rh-ZGx" id="gjI-Cd-VEA"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mHL-f6-9Vf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

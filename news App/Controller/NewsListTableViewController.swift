@@ -10,12 +10,18 @@ import UIKit
 class NewsListTableViewController: UITableViewController {
     //MARK: - Properties
     var articlesVM: ArticleListViewModel!
+    @IBOutlet weak var backgroundActivityIndicator: UIView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "NewsTableViewCell", bundle: nil), forCellReuseIdentifier: K.reusableIdentifier)
         setup()
+        backgroundActivityIndicator.isHidden = false
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+        
     }
     
     func setup(){
@@ -25,6 +31,9 @@ class NewsListTableViewController: UITableViewController {
                 self.articlesVM = ArticleListViewModel(articles: articles)
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
+                    self.backgroundActivityIndicator.isHidden = true
+                    self.activityIndicator.isHidden = true
+                    self.activityIndicator.stopAnimating()
                 }
             }
         }
