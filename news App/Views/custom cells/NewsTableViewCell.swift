@@ -14,6 +14,7 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet weak var NewsImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var bookmarkBtn: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,6 +31,8 @@ class NewsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func saveToReadLaterBtnPressed(_ sender: UIButton) {
+    }
     func prepare(Article:Article){
         titleLabel.text = Article.title
         descriptionLabel.text = Article.description
