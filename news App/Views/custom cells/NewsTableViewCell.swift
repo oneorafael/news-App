@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import NotificationBannerSwift
 
 class NewsTableViewCell: UITableViewCell {
     //MARK: - IBOutlets
@@ -78,6 +79,9 @@ class NewsTableViewCell: UITableViewCell {
         do {
             try? context.save()
             print("salvo")
+            let banner = NotificationBanner(title: "Noticia Salva", subtitle: "Sua noticia está salva. Toque no botão superior para ter acesso.", style: .success)
+            banner.show()
+            
         }
     }
     

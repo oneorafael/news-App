@@ -22,6 +22,7 @@ class NewsListTableViewController: UITableViewController {
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
         
+        
     }
     
     func setup(){
