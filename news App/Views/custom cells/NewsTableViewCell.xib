@@ -71,9 +71,6 @@
                                                         </constraints>
                                                         <color key="tintColor" systemColor="labelColor"/>
                                                         <state key="normal" image="bookmark" catalog="system"/>
-                                                        <connections>
-                                                            <action selector="saveToReadLaterBtnPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ZTN-FP-Clv"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -104,7 +101,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="NewsImage" destination="D5R-GK-LWu" id="uN6-VI-TsD"/>
-                <outlet property="bookmarkBtn" destination="PVR-KD-LsO" id="Ipa-wv-LbE"/>
+                <outlet property="bookmarkBtn" destination="PVR-KD-LsO" id="VRH-OP-XPW"/>
                 <outlet property="cellView" destination="PuV-Os-P5C" id="IQK-kT-aNb"/>
                 <outlet property="descriptionLabel" destination="ZKY-iC-WzA" id="aDD-d3-OnK"/>
                 <outlet property="titleLabel" destination="iBI-py-wyn" id="T0U-EI-PZ3"/>

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class NewsTableViewCell: UITableViewCell {
     //MARK: - IBOutlets
@@ -15,6 +16,8 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var bookmarkBtn: UIButton!
+    var url: String?
+    var imgUrl:String?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,11 +34,11 @@ class NewsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    @IBAction func saveToReadLaterBtnPressed(_ sender: UIButton) {
-    }
     func prepare(Article:Article){
         titleLabel.text = Article.title
         descriptionLabel.text = Article.description
+        url = Article.url
+        imgUrl = Article.urlToImage
         
         //get Image from url
         // Create URL
@@ -49,6 +52,35 @@ class NewsTableViewCell: UITableViewCell {
                 }
             }
         }
+        bookmarkBtn.addTarget(self, action: #selector(bookmarkButtonTapped(sender:)), for: .touchUpInside)
     }
+    
+    @objc
+    func bookmarkButtonTapped(sender:UIButton){
+        print("tocado: \(sender.tag)\n")
+        guard let articleTitle = titleLabel.text else {return}
+        guard let articleDescription = descriptionLabel.text else {return}
+        guard let _url = url else {return}
+        let saveArticle = Article(title: articleTitle, description: articleDescription, urlToImage: imgUrl, url: _url)
+        save(Article: saveArticle)
+      
+        
+    }
+    
+    func save(Article:Article) {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let news = News(context: context)
+        news.newsTitle = Article.title
+        news.newsDescription = Article.description
+        news.newsURL = Article.url!
+        print("\(Article.title),\(Article.description!),\(Article.url!)")
+        
+        do {
+            try? context.save()
+            print("salvo")
+        }
+    }
+    
+    
     
 }

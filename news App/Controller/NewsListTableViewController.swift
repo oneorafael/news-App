@@ -50,6 +50,7 @@ class NewsListTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.reusableIdentifier, for: indexPath) as! NewsTableViewCell
         let article = self.articlesVM.articles[indexPath.row]
         cell.prepare(Article: article)
+        cell.bookmarkBtn.tag = indexPath.row
         return cell
     }
 }

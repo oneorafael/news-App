@@ -33,4 +33,5 @@ struct ArticleViewModel {
     var title: String {return article.title}
     var description:String {return article.description ?? "no-description"}
     var urlToImage: String {return article.urlToImage ?? "no-image"}
+    var url: String {return article.url ?? "no-url"}
 }
