@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -44,7 +45,15 @@
                             <outlet property="delegate" destination="fLb-Dm-N3P" id="RKM-KP-2CZ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="News" id="J4P-F3-f2l"/>
+                    <navigationItem key="navigationItem" title="News" id="J4P-F3-f2l">
+                        <barButtonItem key="rightBarButtonItem" title="Salvos" id="4al-bR-2gw">
+                            <imageReference key="image" image="bookmark.circle" catalog="system" symbolScale="large" renderingMode="original"/>
+                            <color key="tintColor" systemColor="labelColor"/>
+                            <connections>
+                                <segue destination="3bh-ql-Oks" kind="show" id="W9y-nF-WPV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="CVw-9U-GNH" id="tig-Aj-nb1"/>
                         <outlet property="backgroundActivityIndicator" destination="RHZ-Rh-ZGx" id="gjI-Cd-VEA"/>
@@ -75,8 +84,60 @@
             </objects>
             <point key="canvasLocation" x="-281.15942028985512" y="20.758928571428569"/>
         </scene>
+        <!--Noticias Salvas-->
+        <scene sceneID="IwT-bS-ZsB">
+            <objects>
+                <tableViewController id="3bh-ql-Oks" customClass="ReadLaterTableViewController" customModule="news_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="mKJ-uu-ohO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="readLaterReausableCell" textLabel="eje-UX-adZ" detailTextLabel="qoM-eW-qgu" rowHeight="77" style="IBUITableViewCellStyleSubtitle" id="gvQ-gO-WRC">
+                                <rect key="frame" x="0.0" y="24.5" width="414" height="77"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gvQ-gO-WRC" id="l5m-JZ-KBF">
+                                    <rect key="frame" x="0.0" y="0.0" width="384.5" height="77"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eje-UX-adZ">
+                                            <rect key="frame" x="20" y="17" width="35" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qoM-eW-qgu">
+                                            <rect key="frame" x="20" y="40.5" width="53" height="18"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" systemColor="secondaryLabelColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="3bh-ql-Oks" id="DF9-nq-HSt"/>
+                            <outlet property="delegate" destination="3bh-ql-Oks" id="Lbj-YB-Upd"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Noticias Salvas" largeTitleDisplayMode="never" id="m1w-TQ-D8T"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w0d-eV-9KK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1489.8550724637682" y="20.758928571428569"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="bookmark.circle" catalog="system" width="128" height="121"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

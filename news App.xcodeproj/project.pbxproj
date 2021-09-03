@@ -19,6 +19,7 @@
 		6722172526DEC03500D09BE3 /* ArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6722172426DEC03500D09BE3 /* ArticleViewModel.swift */; };
 		6722172926DEC67400D09BE3 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6722172726DEC67400D09BE3 /* NewsTableViewCell.swift */; };
 		6722172A26DEC67400D09BE3 /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6722172826DEC67400D09BE3 /* NewsTableViewCell.xib */; };
+		6790057426E2AEAC00967E5A /* ReadLaterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6790057326E2AEAC00967E5A /* ReadLaterTableViewController.swift */; };
 		67A0BD4226E25D6D006C1666 /* ModelData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 67A0BD4026E25D6D006C1666 /* ModelData.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		6722172426DEC03500D09BE3 /* ArticleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewModel.swift; sourceTree = "<group>"; };
 		6722172726DEC67400D09BE3 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		6722172826DEC67400D09BE3 /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
+		6790057326E2AEAC00967E5A /* ReadLaterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadLaterTableViewController.swift; sourceTree = "<group>"; };
 		67A0BD4126E25D6D006C1666 /* ModelData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ModelData.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				6722170826DEBA0400D09BE3 /* NewsListTableViewController.swift */,
+				6790057326E2AEAC00967E5A /* ReadLaterTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 				6722171F26DEBD4400D09BE3 /* contants.swift in Sources */,
 				6722171C26DEBAFE00D09BE3 /* WebService.swift in Sources */,
 				6722172526DEC03500D09BE3 /* ArticleViewModel.swift in Sources */,
+				6790057426E2AEAC00967E5A /* ReadLaterTableViewController.swift in Sources */,
 				6722170726DEBA0400D09BE3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
