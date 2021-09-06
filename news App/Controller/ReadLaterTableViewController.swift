@@ -14,7 +14,6 @@ class ReadLaterTableViewController: UITableViewController {
         loadDataFromCoreData()
     }
     // MARK: - Functions
-    /// <#Description#>
     func loadDataFromCoreData(){
         readLaterListVM.loadNews { results in
             for result in results {
@@ -25,6 +24,12 @@ class ReadLaterTableViewController: UITableViewController {
         }
         self.tableView.reloadData()
     }
+    
+    @IBAction func removeAllNews(_ sender: UIBarButtonItem) {
+        readLaterListVM.removeAll()
+        loadDataFromCoreData()
+    }
+    
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

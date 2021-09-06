@@ -36,4 +36,27 @@ struct ReadLaterListViewModel {
             print("Error deleting - \(error.localizedDescription)")
         }
     }
+    
+    func removeAll(){
+        // Initialize Fetch Request
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "News")
+
+        // Configure Fetch Request
+        fetchRequest.includesPropertyValues = false
+
+        do {
+            let items = try context.fetch(fetchRequest) as! [NSManagedObject]
+
+            for item in items {
+                context.delete(item)
+            }
+
+            // Save Changes
+            try? context.save()
+
+        } catch let error{
+            print("error to delete all data from coredata")
+            print(error.localizedDescription)
+        }
+    }
 }
