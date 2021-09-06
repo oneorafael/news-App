@@ -47,7 +47,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="News" id="J4P-F3-f2l">
                         <barButtonItem key="rightBarButtonItem" title="Salvos" id="4al-bR-2gw">
-                            <imageReference key="image" image="bookmark.circle" catalog="system" symbolScale="large" renderingMode="original"/>
+                            <imageReference key="image" image="bookmark.circle" catalog="system" symbolScale="default"/>
                             <color key="tintColor" systemColor="labelColor"/>
                             <connections>
                                 <segue destination="3bh-ql-Oks" kind="show" id="W9y-nF-WPV"/>
