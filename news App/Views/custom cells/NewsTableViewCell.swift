@@ -7,7 +7,7 @@
 
 import UIKit
 import CoreData
-import NotificationBannerSwift
+import Alamofire
 
 class NewsTableViewCell: UITableViewCell {
     //MARK: - IBOutlets
@@ -41,7 +41,16 @@ class NewsTableViewCell: UITableViewCell {
         descriptionLabel.text = Article.description
         url = Article.url
         imgUrl = Article.urlToImage
-        
+        if Article.urlToImage != nil {
+            let url = URL(string: Article.urlToImage!)!
+            AF.request(url).response { response in
+                guard let image = response.data else {return}
+                DispatchQueue.main.async {
+                    self.NewsImage.image = UIImage.init(data: image)
+                }
+            }
+           
+        }
         //get Image from url
         // Create URL
 //        if Article.urlToImage != nil {
