@@ -9,6 +9,7 @@ import UIKit
 
 class ReadLaterTableViewController: UITableViewController {
     var readLaterListVM = ReadLaterListViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadDataFromCoreData()
@@ -28,6 +29,7 @@ class ReadLaterTableViewController: UITableViewController {
     @IBAction func removeAllNews(_ sender: UIBarButtonItem) {
         readLaterListVM.removeAll()
         loadDataFromCoreData()
+        displayNotificationAndDismissIn2Second(notificationTitle: "Noticias apagadas", notificationMessage: "Todas as noticias foram apagadas com sucesso.")
     }
     
     // MARK: - Table view data source
@@ -50,6 +52,8 @@ class ReadLaterTableViewController: UITableViewController {
         if editingStyle == .delete {
             readLaterListVM.removeNews(at: indexPath.row)
             loadDataFromCoreData()
+            displayNotificationAndDismissIn2Second(notificationTitle: "Noticia apagada", notificationMessage: "Essa noticia foi apagada com sucesso")
         }
+        
     }
 }

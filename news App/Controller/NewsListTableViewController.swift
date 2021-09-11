@@ -29,6 +29,7 @@ class NewsListTableViewController: UITableViewController {
         let urlPath = URL(string: K.urlPath)!
         WebService().getData(url: urlPath) { articles in
             if !articles.isEmpty {
+                
                 self.articlesVM = ArticleListViewModel(articles: articles)
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
@@ -49,6 +50,7 @@ class NewsListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.reusableIdentifier, for: indexPath) as! NewsTableViewCell
+        cell.parentVC = self
         let article = self.articlesVM.articles[indexPath.row]
         cell.prepare(Article: article)
         cell.bookmarkBtn.tag = indexPath.row

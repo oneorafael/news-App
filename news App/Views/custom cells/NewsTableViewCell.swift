@@ -19,6 +19,7 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet weak var bookmarkBtn: UIButton!
     var url: String?
     var imgUrl:String?
+    var parentVC: UITableViewController!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -43,16 +44,16 @@ class NewsTableViewCell: UITableViewCell {
         
         //get Image from url
         // Create URL
-        if Article.urlToImage != nil {
-            let url = URL(string: Article.urlToImage!)
-            // Fetch Image Data
-            if let data = try? Data(contentsOf: url!) {
-                // Create Image and Update Image View
-                DispatchQueue.main.async {
-                    self.NewsImage.image = UIImage(data: data)
-                }
-            }
-        }
+//        if Article.urlToImage != nil {
+//            let url = URL(string: Article.urlToImage!)
+//            // Fetch Image Data
+//            if let data = try? Data(contentsOf: url!) {
+//                // Create Image and Update Image View
+//                DispatchQueue.main.async {
+//                    self.NewsImage.image = UIImage(data: data)
+//                }
+//            }
+//        }
         bookmarkBtn.addTarget(self, action: #selector(bookmarkButtonTapped(sender:)), for: .touchUpInside)
     }
     
@@ -79,8 +80,7 @@ class NewsTableViewCell: UITableViewCell {
         do {
             try? context.save()
             print("salvo")
-            let banner = GrowingNotificationBanner(title: "Noticia Salva", subtitle: "Sua noticia está salva. Toque no botão superior para ter acesso.", style: .success)
-            banner.show()
+            parentVC.displayNotificationAndDismissIn2Second(notificationTitle: "Noticia Salva", notificationMessage: "Sua noticia foi salva com sucesso")
             
         }
     }
