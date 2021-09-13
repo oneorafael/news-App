@@ -51,18 +51,6 @@ class NewsTableViewCell: UITableViewCell {
             }
            
         }
-        //get Image from url
-        // Create URL
-//        if Article.urlToImage != nil {
-//            let url = URL(string: Article.urlToImage!)
-//            // Fetch Image Data
-//            if let data = try? Data(contentsOf: url!) {
-//                // Create Image and Update Image View
-//                DispatchQueue.main.async {
-//                    self.NewsImage.image = UIImage(data: data)
-//                }
-//            }
-//        }
         bookmarkBtn.addTarget(self, action: #selector(bookmarkButtonTapped(sender:)), for: .touchUpInside)
     }
     

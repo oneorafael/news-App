@@ -27,18 +27,27 @@ class NewsListTableViewController: UITableViewController {
     
     func setup(){
         let urlPath = URL(string: K.urlPath)!
-        WebService().getData(url: urlPath) { articles in
-            if !articles.isEmpty {
-                
-                self.articlesVM = ArticleListViewModel(articles: articles)
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                    self.backgroundActivityIndicator.isHidden = true
-                    self.activityIndicator.isHidden = true
-                    self.activityIndicator.stopAnimating()
+        if WebService.isConnectedToInternet {
+            WebService().getData(url: urlPath) { articles in
+                if !articles.isEmpty {
+                    
+                    self.articlesVM = ArticleListViewModel(articles: articles)
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                        self.backgroundActivityIndicator.isHidden = true
+                        self.activityIndicator.isHidden = true
+                        self.activityIndicator.stopAnimating()
+                    }
                 }
             }
+        } else {
+            self.backgroundActivityIndicator.isHidden = true
+            self.activityIndicator.isHidden = true
+            self.activityIndicator.stopAnimating()
+            noInternetAvaliableAlert()
+            
         }
+        
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -58,3 +67,15 @@ class NewsListTableViewController: UITableViewController {
     }
 }
 
+extension NewsListTableViewController {
+    func noInternetAvaliableAlert(){
+        let alert = UIAlertController(title: "Sem conexão disponivel", message: "Verifique a sua conexão com a internet e tente novamente", preferredStyle: .alert)
+        let cancelOption = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+        let reloadData = UIAlertAction(title: "Tentar novamente", style: .destructive) { UIAlertAction in
+            self.setup()
+        }
+        alert.addAction(cancelOption)
+        alert.addAction(reloadData)
+        self.present(alert, animated: true, completion: nil)
+    }
+}
