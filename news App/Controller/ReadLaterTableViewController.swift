@@ -8,6 +8,7 @@
 import UIKit
 
 class ReadLaterTableViewController: UITableViewController {
+    //MARK: - Properties
     var readLaterListVM = ReadLaterListViewModel()
     
     override func viewDidLoad() {
@@ -15,6 +16,8 @@ class ReadLaterTableViewController: UITableViewController {
         loadDataFromCoreData()
     }
     // MARK: - Functions
+    
+    //get data from coredata and display on tableView
     func loadDataFromCoreData(){
         readLaterListVM.loadNews { results in
             for result in results {
@@ -26,10 +29,11 @@ class ReadLaterTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
+    //remove data
     @IBAction func removeAllNews(_ sender: UIBarButtonItem) {
         readLaterListVM.removeAll()
         loadDataFromCoreData()
-        displayNotificationAndDismissIn2Second(notificationTitle: "Noticias apagadas", notificationMessage: "Todas as noticias foram apagadas com sucesso.")
+        displayNotificationAndDismissIn1Second(notificationTitle: "Noticias apagadas", notificationMessage: "Todas as noticias foram apagadas com sucesso.")
     }
     
     // MARK: - Table view data source
@@ -38,7 +42,6 @@ class ReadLaterTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return readLaterListVM.numberOfRowsInSection(section: section)
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.readLaterReausableCell, for: indexPath)
@@ -52,7 +55,7 @@ class ReadLaterTableViewController: UITableViewController {
         if editingStyle == .delete {
             readLaterListVM.removeNews(at: indexPath.row)
             loadDataFromCoreData()
-            displayNotificationAndDismissIn2Second(notificationTitle: "Noticia apagada", notificationMessage: "Essa noticia foi apagada com sucesso")
+            displayNotificationAndDismissIn1Second(notificationTitle: "Noticia apagada", notificationMessage: "Essa noticia foi apagada com sucesso")
         }
         
     }

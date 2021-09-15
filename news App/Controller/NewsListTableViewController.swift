@@ -8,7 +8,7 @@
 import UIKit
 
 class NewsListTableViewController: UITableViewController {
-    //MARK: - Properties
+    //MARK: - Properties & IBOutlet
     var articlesVM: ArticleListViewModel!
     @IBOutlet weak var backgroundActivityIndicator: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -18,16 +18,14 @@ class NewsListTableViewController: UITableViewController {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "NewsTableViewCell", bundle: nil), forCellReuseIdentifier: K.reusableIdentifier)
         setup()
+        
+    //init activityIndicator status
         backgroundActivityIndicator.isHidden = false
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
-        
-        
     }
     
- 
-    
-    
+    //prepare data to display on tableView
     func setup(){
         let urlPath = URL(string: K.urlPath)!
         if WebService.isConnectedToInternet {
@@ -53,6 +51,7 @@ class NewsListTableViewController: UITableViewController {
         
     }
     
+    //MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return articlesVM == nil ? 0 : articlesVM.numberOfSections
     }
@@ -80,7 +79,9 @@ class NewsListTableViewController: UITableViewController {
     }
 }
 
+//MARK: - noInternetAvaliableAlert extension
 extension NewsListTableViewController {
+    //Notificação de falta de conexão com internet
     func noInternetAvaliableAlert(){
         let alert = UIAlertController(title: "Sem conexão disponivel", message: "Verifique a sua conexão com a internet e tente novamente", preferredStyle: .alert)
         let cancelOption = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)

@@ -8,10 +8,13 @@
 import Alamofire
 
 class WebService {
+    //check internet connection using NetworkReachabilityManager (Alamofire)
     class var isConnectedToInternet:Bool {
             return NetworkReachabilityManager()!.isReachable
         
     }
+    
+    // download data from News.org API
     func getData(url:URL, completionHandler:@escaping([Article])->()){
         if K.apiKey.isEmpty {
                 print("Please set a developer key and run again")

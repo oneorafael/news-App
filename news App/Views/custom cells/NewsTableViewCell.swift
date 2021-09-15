@@ -11,18 +11,20 @@ import Alamofire
 
 class NewsTableViewCell: UITableViewCell {
     //MARK: - IBOutlets
-   
     @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var NewsImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var bookmarkBtn: UIButton!
+    
     var url: String?
     var imgUrl:String?
     var parentVC: UITableViewController!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+    //add round corners and shadow on custom cell
         cellView.layer.cornerRadius = 10
         cellView.layer.shadowColor = UIColor.black.cgColor
         cellView.layer.shadowOpacity = 0.2
@@ -30,12 +32,7 @@ class NewsTableViewCell: UITableViewCell {
         cellView.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
+    //prepare to display data on NewsTableViewCell (XIB)
     func prepare(Article:Article){
         titleLabel.text = Article.title
         descriptionLabel.text = Article.description
@@ -66,6 +63,7 @@ class NewsTableViewCell: UITableViewCell {
         
     }
     
+//    Save data on coredata
     func save(Article:Article) {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let news = News(context: context)
@@ -78,7 +76,7 @@ class NewsTableViewCell: UITableViewCell {
         do {
             try? context.save()
             print("salvo")
-            parentVC.displayNotificationAndDismissIn2Second(notificationTitle: "Noticia Salva", notificationMessage: "Sua noticia foi salva com sucesso")
+            parentVC.displayNotificationAndDismissIn1Second(notificationTitle: "Noticia Salva", notificationMessage: "Sua noticia foi salva com sucesso")
             
         }
     }
