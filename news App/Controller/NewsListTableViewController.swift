@@ -16,13 +16,20 @@ class NewsListTableViewController: UITableViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UINib(nibName: "NewsTableViewCell", bundle: nil), forCellReuseIdentifier: K.reusableIdentifier)
-        setup()
-        
-    //init activityIndicator status
-        backgroundActivityIndicator.isHidden = false
-        activityIndicator.isHidden = false
-        activityIndicator.startAnimating()
+        if(!K.apiKey.isEmpty) {
+            tableView.register(UINib(nibName: "NewsTableViewCell", bundle: nil), forCellReuseIdentifier: K.reusableIdentifier)
+            setup()
+            
+        //init activityIndicator status
+            backgroundActivityIndicator.isHidden = false
+            activityIndicator.isHidden = false
+            activityIndicator.startAnimating()
+        } else {
+            noUserAPIKeyAlert()
+            self.backgroundActivityIndicator.isHidden = true
+            self.activityIndicator.isHidden = true
+            self.activityIndicator.stopAnimating()
+        }
     }
     
     //prepare data to display on tableView
@@ -79,7 +86,7 @@ class NewsListTableViewController: UITableViewController {
     }
 }
 
-//MARK: - noInternetAvaliableAlert extension
+//MARK: - Alert extension
 extension NewsListTableViewController {
     //Notificação de falta de conexão com internet
     func noInternetAvaliableAlert(){
@@ -90,6 +97,14 @@ extension NewsListTableViewController {
         }
         alert.addAction(cancelOption)
         alert.addAction(reloadData)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    //display when user API KEY is empty
+    func noUserAPIKeyAlert(){
+        let alert = UIAlertController(title: "chave de usuario não encontrada", message: "adicione sua chave de usuario da api no arquivo constants", preferredStyle: .alert)
+        let cancelOption = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+        alert.addAction(cancelOption)
         self.present(alert, animated: true, completion: nil)
     }
 }
