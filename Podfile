@@ -6,7 +6,6 @@ target 'news App' do
   use_frameworks!
 
   # Pods for news App
-    pod 'NotificationBannerSwift', '~> 3.0.0'
     pod 'Alamofire', '~> 5.4'
 
 
