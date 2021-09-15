@@ -25,6 +25,9 @@ class NewsListTableViewController: UITableViewController {
         
     }
     
+ 
+    
+    
     func setup(){
         let urlPath = URL(string: K.urlPath)!
         if WebService.isConnectedToInternet {
@@ -64,6 +67,16 @@ class NewsListTableViewController: UITableViewController {
         cell.prepare(Article: article)
         cell.bookmarkBtn.tag = indexPath.row
         return cell
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: K.contentViewSegue, sender: self)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.contentViewSegue{
+            let destination = segue.destination as! ContentDetailViewController
+            destination.article = articlesVM.articles[(tableView.indexPathForSelectedRow?.row)!]
+        }
     }
 }
 

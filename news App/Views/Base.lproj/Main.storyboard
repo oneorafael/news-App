@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -50,13 +51,14 @@
                             <imageReference key="image" image="bookmark.circle" catalog="system" symbolScale="large"/>
                             <color key="tintColor" systemColor="labelColor"/>
                             <connections>
-                                <segue destination="3bh-ql-Oks" kind="show" id="W9y-nF-WPV"/>
+                                <segue destination="3bh-ql-Oks" kind="show" id="UwH-BU-loq"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="CVw-9U-GNH" id="tig-Aj-nb1"/>
                         <outlet property="backgroundActivityIndicator" destination="RHZ-Rh-ZGx" id="gjI-Cd-VEA"/>
+                        <segue destination="q6D-X3-xCp" kind="show" identifier="contentDetailSegue" id="Zao-ja-ISa"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mHL-f6-9Vf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -130,12 +132,70 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="q6D-X3-xCp" kind="show" identifier="readLaterContentDetailSegue" id="RoU-zS-byk"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w0d-eV-9KK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1489.8550724637682" y="20.758928571428569"/>
+            <point key="canvasLocation" x="2126" y="21"/>
+        </scene>
+        <!--Content Detail View Controller-->
+        <scene sceneID="XU8-oP-Vti">
+            <objects>
+                <viewController id="q6D-X3-xCp" customClass="ContentDetailViewController" customModule="news_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Dpr-lK-mAN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YCR-of-hkR">
+                                <rect key="frame" x="0.0" y="88" width="414" height="325"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="YCR-of-hkR" secondAttribute="height" multiplier="414:325" id="nci-wz-AQi"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hk8-x5-Vta">
+                                <rect key="frame" x="20" y="421" width="374" height="27.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="HVd-9w-Rmv">
+                                <rect key="frame" x="20" y="456.5" width="374" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="O1s-FV-IO8"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="HVd-9w-Rmv" firstAttribute="top" secondItem="hk8-x5-Vta" secondAttribute="bottom" constant="8" id="NhX-oh-O0B"/>
+                            <constraint firstItem="hk8-x5-Vta" firstAttribute="top" secondItem="YCR-of-hkR" secondAttribute="bottom" constant="8" id="O43-hU-L5f"/>
+                            <constraint firstItem="YCR-of-hkR" firstAttribute="leading" secondItem="O1s-FV-IO8" secondAttribute="leading" id="Owb-Lf-tLS"/>
+                            <constraint firstItem="O1s-FV-IO8" firstAttribute="trailing" secondItem="hk8-x5-Vta" secondAttribute="trailing" constant="20" id="UvM-fh-4AO"/>
+                            <constraint firstItem="YCR-of-hkR" firstAttribute="trailing" secondItem="O1s-FV-IO8" secondAttribute="trailing" id="YIQ-Nu-sUp"/>
+                            <constraint firstItem="hk8-x5-Vta" firstAttribute="leading" secondItem="O1s-FV-IO8" secondAttribute="leading" constant="20" id="hDG-tR-qIK"/>
+                            <constraint firstItem="YCR-of-hkR" firstAttribute="top" secondItem="O1s-FV-IO8" secondAttribute="top" id="pwd-iB-mLP"/>
+                            <constraint firstItem="O1s-FV-IO8" firstAttribute="trailing" secondItem="HVd-9w-Rmv" secondAttribute="trailing" constant="20" id="sO1-ah-UHu"/>
+                            <constraint firstItem="HVd-9w-Rmv" firstAttribute="leading" secondItem="O1s-FV-IO8" secondAttribute="leading" constant="20" id="uw1-TY-4n1"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="7C0-RG-DQl"/>
+                    <connections>
+                        <outlet property="contentDescriptionLabel" destination="HVd-9w-Rmv" id="GkD-pa-mEH"/>
+                        <outlet property="contentImageView" destination="YCR-of-hkR" id="seO-xA-eiD"/>
+                        <outlet property="contentTitleLabel" destination="hk8-x5-Vta" id="bdA-Cf-LHL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rO9-fE-uGN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1074" y="793"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="RoU-zS-byk"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="bookmark.circle" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">

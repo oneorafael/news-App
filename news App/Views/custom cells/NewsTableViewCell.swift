@@ -72,6 +72,7 @@ class NewsTableViewCell: UITableViewCell {
         news.newsTitle = Article.title
         news.newsDescription = Article.description
         news.newsURL = Article.url!
+        news.newsImageURL = Article.urlToImage
         print("\(Article.title),\(Article.description!),\(Article.url!)")
         
         do {

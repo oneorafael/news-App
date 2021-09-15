@@ -56,4 +56,13 @@ class ReadLaterTableViewController: UITableViewController {
         }
         
     }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: K.readLaterContentViewSegue, sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as! ContentDetailViewController
+        destination.news = readLaterListVM.news[(tableView.indexPathForSelectedRow?.row)!]
+    }
 }
+
